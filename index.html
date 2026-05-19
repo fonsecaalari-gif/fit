@@ -23,7 +23,15 @@ Mantenha a div externa se quiser preservar o layout.
   <header class="header">
     <div class="container header-inner">
       <a href="#inicio" class="logo">
-        <div class="logo-icon">⚡</div>
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="1" y="8.5" width="5" height="7" rx="2.2" fill="white"/>
+            <rect x="6" y="10.5" width="2" height="3" rx="1" fill="rgba(255,255,255,0.85)"/>
+            <rect x="8" y="11.25" width="8" height="1.5" rx="0.75" fill="rgba(255,255,255,0.7)"/>
+            <rect x="16" y="10.5" width="2" height="3" rx="1" fill="rgba(255,255,255,0.85)"/>
+            <rect x="18" y="8.5" width="5" height="7" rx="2.2" fill="white"/>
+          </svg>
+        </div>
         <div>
           <p class="logo-title">FitZen</p>
           <p class="logo-subtitle">ferramentas fitness</p>
@@ -81,17 +89,15 @@ Mantenha a div externa se quiser preservar o layout.
         </div>
 
         <div class="card hero-card">
-          <p class="card-tag">Painel rápido</p>
-          <h3>Resumo do usuário</h3>
+          <p class="card-tag">Exemplo de resultado</p>
+          <h3>Seus dados em segundos</h3>
           <div class="summary-grid">
             <div class="result-box"><div class="result-title">⚖️ IMC</div><div class="result-value">23,8</div><p class="result-note">Peso adequado</p></div>
-            <div class="result-box"><div class="result-title">🔥 Macros</div><div class="result-value">1.920 kcal</div><p class="result-note">Meta diária estimada</p></div>
-            <div class="result-box"><div class="result-title">🏋️ Treino</div><div class="result-value">ABC</div><p class="result-note">4 dias por semana</p></div>
-            <div class="result-box"><div class="result-title">⏱️ Timer</div><div class="result-value">40/20</div><p class="result-note">HIIT configurado</p></div>
+            <div class="result-box"><div class="result-title">🔥 Calorias</div><div class="result-value">1.920</div><p class="result-note">kcal/dia estimada</p></div>
+            <div class="result-box"><div class="result-title">🏋️ Divisão</div><div class="result-value">ABC</div><p class="result-note">4 dias/semana</p></div>
+            <div class="result-box"><div class="result-title">⏱️ HIIT</div><div class="result-value">40″/20″</div><p class="result-note">8 rounds configurados</p></div>
           </div>
-          <p class="warning">
-            Ferramentas rápidas para acompanhar seus cálculos, treinos e metas em uma única página.
-          </p>
+          <p class="hero-card-note">Preencha as calculadoras abaixo para ver seus dados reais.</p>
         </div>
       </div>
     </section>
@@ -143,7 +149,7 @@ Mantenha a div externa se quiser preservar o layout.
           <a href="#blog" class="card tool-card tool-link" aria-label="Ver postagens do blog">
             <div class="icon-circle">📰</div>
             <h3>Blog</h3>
-            <p>Publique conteúdos para atrair tráfego orgânico.</p>
+            <p>Dicas, artigos e guias sobre treino, nutrição e saúde.</p>
             <span class="card-action">Ver postagens ›</span>
           </a>
         </div>
@@ -170,8 +176,8 @@ Mantenha a div externa se quiser preservar o layout.
         <div class="calculator-grid">
           <div class="card">
             <div class="form-grid">
-              <label class="field"><span>Peso em kg</span><input id="imcPeso" type="number" value="70" step="0.1"></label>
-              <label class="field"><span>Altura em cm</span><input id="imcAltura" type="number" value="170" step="1"></label>
+              <label class="field"><span>Peso em kg</span><input id="imcPeso" type="number" placeholder="ex: 70" step="0.1" min="1"></label>
+              <label class="field"><span>Altura em cm</span><input id="imcAltura" type="number" placeholder="ex: 170" step="1" min="1"></label>
             </div>
           </div>
 
@@ -198,11 +204,11 @@ Mantenha a div externa se quiser preservar o layout.
           <div class="card">
             <div class="form-grid">
               <label class="field"><span>Sexo</span><select id="bfSexo"><option value="feminino">Feminino</option><option value="masculino">Masculino</option></select></label>
-              <label class="field"><span>Peso em kg</span><input id="bfPeso" type="number" value="65"></label>
-              <label class="field"><span>Altura em cm</span><input id="bfAltura" type="number" value="165"></label>
-              <label class="field"><span>Cintura em cm</span><input id="bfCintura" type="number" value="75"></label>
-              <label class="field"><span>Pescoço em cm</span><input id="bfPescoco" type="number" value="32"></label>
-              <label id="quadrilWrap" class="field"><span>Quadril em cm</span><input id="bfQuadril" type="number" value="98"></label>
+              <label class="field"><span>Peso em kg</span><input id="bfPeso" type="number" placeholder="ex: 65" min="1"></label>
+              <label class="field"><span>Altura em cm</span><input id="bfAltura" type="number" placeholder="ex: 165" min="1"></label>
+              <label class="field"><span>Cintura em cm</span><input id="bfCintura" type="number" placeholder="ex: 75" min="1"></label>
+              <label class="field"><span>Pescoço em cm</span><input id="bfPescoco" type="number" placeholder="ex: 32" min="1"></label>
+              <label id="quadrilWrap" class="field"><span>Quadril em cm</span><input id="bfQuadril" type="number" placeholder="ex: 98" min="1"></label>
             </div>
           </div>
 
@@ -238,9 +244,9 @@ Mantenha a div externa se quiser preservar o layout.
           <div class="card">
             <div class="form-grid">
               <label class="field"><span>Sexo</span><select id="macroSexo"><option value="feminino">Feminino</option><option value="masculino">Masculino</option></select></label>
-              <label class="field"><span>Idade</span><input id="macroIdade" type="number" value="30"></label>
-              <label class="field"><span>Peso em kg</span><input id="macroPeso" type="number" value="65"></label>
-              <label class="field"><span>Altura em cm</span><input id="macroAltura" type="number" value="165"></label>
+              <label class="field"><span>Idade</span><input id="macroIdade" type="number" placeholder="ex: 30" min="1"></label>
+              <label class="field"><span>Peso em kg</span><input id="macroPeso" type="number" placeholder="ex: 65" min="1"></label>
+              <label class="field"><span>Altura em cm</span><input id="macroAltura" type="number" placeholder="ex: 165" min="1"></label>
               <label class="field"><span>Atividade</span><select id="macroAtividade"><option value="1.2">Sedentário</option><option value="1.375" selected>Leve: 1–3x/semana</option><option value="1.55">Moderado: 3–5x/semana</option><option value="1.725">Intenso: 6–7x/semana</option></select></label>
               <label class="field"><span>Objetivo</span><select id="macroObjetivo"><option value="emagrecer">Emagrecer</option><option value="manter" selected>Manter peso</option><option value="ganhar">Ganhar massa</option></select></label>
             </div>

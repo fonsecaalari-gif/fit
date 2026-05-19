@@ -17,15 +17,35 @@ function fmt(num, digits = 1) {
   return Number(num).toFixed(digits).replace(".", ",");
 }
 
-function calculateIMC() {
-  const peso = Number($("imcPeso").value.replace(",", "."));
-  const altura = Number($("imcAltura").value.replace(",", ".")) / 100;
+function setEmpty(ids) {
+  ids.forEach((id) => {
+    const el = $(id);
+    if (el) {
+      el.textContent = "—";
+      el.className = el.className.replace("result-value", "result-value result-empty");
+    }
+  });
+}
 
-  if (!peso || !altura) return;
+function setResult(id, value) {
+  const el = $(id);
+  if (!el) return;
+  el.textContent = value;
+  el.className = "result-value";
+}
+
+function calculateIMC() {
+  const peso = Number(String($("imcPeso").value).replace(",", "."));
+  const altura = Number(String($("imcAltura").value).replace(",", ".")) / 100;
+
+  if (!peso || !altura) {
+    setEmpty(["imcValor", "imcFaixa"]);
+    $("imcClasse").textContent = "Preencha peso e altura";
+    return;
+  }
 
   const imc = peso / (altura * altura);
   let classe = "";
-
   if (imc < 18.5) classe = "Abaixo do peso";
   else if (imc < 25) classe = "Peso adequado";
   else if (imc < 30) classe = "Sobrepeso";
@@ -36,9 +56,9 @@ function calculateIMC() {
   const min = 18.5 * altura * altura;
   const max = 24.9 * altura * altura;
 
-  $("imcValor").textContent = fmt(imc);
+  setResult("imcValor", fmt(imc));
   $("imcClasse").textContent = classe;
-  $("imcFaixa").textContent = `${fmt(min)}–${fmt(max)} kg`;
+  setResult("imcFaixa", `${fmt(min)}–${fmt(max)} kg`);
 }
 
 function calculateBF() {
@@ -51,10 +71,13 @@ function calculateBF() {
 
   $("quadrilWrap").style.display = sexo === "feminino" ? "block" : "none";
 
-  if (!altura || !cintura || !pescoco || !peso) return;
+  if (!altura || !cintura || !pescoco || !peso) {
+    setEmpty(["bfValor", "bfMagra", "bfGordura"]);
+    $("bfClasse").textContent = "Preencha os campos";
+    return;
+  }
 
   let bf = null;
-
   if (sexo === "masculino") {
     if (cintura <= pescoco) return;
     bf = 495 / (1.0324 - 0.19077 * Math.log10(cintura - pescoco) + 0.15456 * Math.log10(altura)) - 450;
@@ -67,10 +90,10 @@ function calculateBF() {
   const magra = peso - gordura;
   const classe = bf < 18 ? "Baixo/moderado" : bf < 25 ? "Médio" : bf < 32 ? "Elevado" : "Muito elevado";
 
-  $("bfValor").textContent = `${fmt(bf)}%`;
+  setResult("bfValor", `${fmt(bf)}%`);
   $("bfClasse").textContent = classe;
-  $("bfMagra").textContent = `${fmt(magra)} kg`;
-  $("bfGordura").textContent = `${fmt(gordura)} kg`;
+  setResult("bfMagra", `${fmt(magra)} kg`);
+  setResult("bfGordura", `${fmt(gordura)} kg`);
 }
 
 function calculateMacros() {
@@ -81,7 +104,10 @@ function calculateMacros() {
   const atividade = Number($("macroAtividade").value);
   const objetivo = $("macroObjetivo").value;
 
-  if (!idade || !peso || !altura || !atividade) return;
+  if (!idade || !peso || !altura || !atividade) {
+    setEmpty(["macroCalorias", "macroProteina", "macroCarbo", "macroGordura", "macroAgua", "macroTmb"]);
+    return;
+  }
 
   const bmr = sexo === "masculino"
     ? 10 * peso + 6.25 * altura - 5 * idade + 5
@@ -97,12 +123,12 @@ function calculateMacros() {
   const carbs = (calories - protein * 4 - fat * 9) / 4;
   const water = peso * 35;
 
-  $("macroCalorias").textContent = `${Math.round(calories)} kcal`;
-  $("macroProteina").textContent = `${Math.round(protein)} g`;
-  $("macroCarbo").textContent = `${Math.round(carbs)} g`;
-  $("macroGordura").textContent = `${Math.round(fat)} g`;
-  $("macroAgua").textContent = `${(water / 1000).toFixed(1).replace(".", ",")} L`;
-  $("macroTmb").textContent = `${Math.round(bmr)} kcal`;
+  setResult("macroCalorias", `${Math.round(calories)} kcal`);
+  setResult("macroProteina", `${Math.round(protein)} g`);
+  setResult("macroCarbo", `${Math.round(carbs)} g`);
+  setResult("macroGordura", `${Math.round(fat)} g`);
+  setResult("macroAgua", `${(water / 1000).toFixed(1).replace(".", ",")} L`);
+  setResult("macroTmb", `${Math.round(bmr)} kcal`);
 }
 
 function generateWorkout() {
@@ -161,7 +187,9 @@ function updateTimerView() {
   $("timerStart").textContent = timer.running ? "⏸ Pausar" : "▶ Iniciar";
 
   const total = (values.work + values.rest) * values.rounds - values.rest;
-  $("timerTotal").textContent = `Tempo total aproximado: ${Math.floor(total / 60)}min ${total % 60}s`;
+  $("timerTotal").textContent = total > 0
+    ? `Tempo total: ${Math.floor(total / 60)}min ${total % 60}s`
+    : "Tempo total: —";
 }
 
 function resetTimer() {
@@ -206,13 +234,11 @@ function tickTimer() {
 
 function toggleTimer() {
   timer.running = !timer.running;
-
   if (timer.running) {
     timer.interval = setInterval(tickTimer, 1000);
   } else {
     clearInterval(timer.interval);
   }
-
   updateTimerView();
 }
 
@@ -225,7 +251,6 @@ function bindInputs(ids, callback) {
     }
   });
 }
-
 
 function renderBlogCards() {
   const grid = $("blogGrid");
@@ -245,35 +270,13 @@ function renderBlogCards() {
   `).join("");
 }
 
-
-
-function bindToolCards() {
-  document.querySelectorAll(".tool-link").forEach((card) => {
-    card.addEventListener("click", (event) => {
-      const targetId = card.getAttribute("href");
-      if (!targetId || !targetId.startsWith("#")) return;
-
-      const target = document.querySelector(targetId);
-      if (!target) return;
-
-      event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.replaceState(null, "", targetId);
-    });
-  });
-}
-
-
-
-function bindToolCardsFinal() {
+function bindToolLinks() {
   document.querySelectorAll(".tool-link").forEach((card) => {
     card.addEventListener("click", (event) => {
       const href = card.getAttribute("href");
       if (!href || !href.startsWith("#")) return;
-
       const target = document.querySelector(href);
       if (!target) return;
-
       event.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
       history.replaceState(null, "", href);
@@ -281,14 +284,22 @@ function bindToolCardsFinal() {
   });
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  $("menuBtn").addEventListener("click", () => {
-    $("mobileNav").classList.toggle("open");
+  const menuBtn = $("menuBtn");
+  const mobileNav = $("mobileNav");
+
+  menuBtn.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.toggle("open");
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+    menuBtn.setAttribute("aria-expanded", isOpen);
   });
 
-  document.querySelectorAll(".mobile-nav a").forEach((link) => {
-    link.addEventListener("click", () => $("mobileNav").classList.remove("open"));
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("open");
+      menuBtn.textContent = "☰";
+      menuBtn.setAttribute("aria-expanded", false);
+    });
   });
 
   bindInputs(["imcPeso", "imcAltura"], calculateIMC);
@@ -304,15 +315,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = $("policyText").textContent;
     await navigator.clipboard?.writeText(text);
     $("copyPolicy").textContent = "✅ Copiado";
-    setTimeout(() => $("copyPolicy").textContent = "📋 Copiar aviso", 1500);
+    setTimeout(() => ($("copyPolicy").textContent = "📋 Copiar aviso"), 1500);
   });
 
-  bindToolCards();
-  bindToolCardsFinal();
+  bindToolLinks();
   renderBlogCards();
-  calculateIMC();
-  calculateBF();
-  calculateMacros();
+
+  /* Calculadoras iniciam em estado vazio — usuário preenche os dados */
+  setEmpty(["imcValor", "imcFaixa"]);
+  $("imcClasse").textContent = "Preencha peso e altura";
+  setEmpty(["bfValor", "bfMagra", "bfGordura"]);
+  $("bfClasse").textContent = "Preencha os campos";
+  setEmpty(["macroCalorias", "macroProteina", "macroCarbo", "macroGordura", "macroAgua", "macroTmb"]);
+
+  /* Treino e timer iniciam com valores padrão por serem seletores */
   generateWorkout();
   resetTimer();
 });
