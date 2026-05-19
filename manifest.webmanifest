@@ -1,6 +1,6 @@
 {
-  "name": "FitCalc — Ferramentas Fitness",
-  "short_name": "FitCalc",
+  "name": "FitZen — Ferramentas Fitness",
+  "short_name": "FitZen",
   "description": "Calculadoras de IMC, BF, macros, gerador de treinos, timer e blog fitness.",
   "start_url": "./",
   "display": "standalone",
