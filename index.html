@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22c55e" />
+  <meta name="description" content="FitCalc — calculadoras de IMC, gordura corporal, macros, gerador de treinos, timer e blog fitness." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>FitCalc — Ferramentas gratuitas para quem treina</title>
+
+<!--
+COMO TROCAR OS ESPAÇOS DE PUBLICIDADE POR ADSENSE:
+Depois da aprovação no Google AdSense, substitua o conteúdo de cada <div class="ad-slot"> por um bloco <ins class="adsbygoogle"> fornecido pelo AdSense.
+Mantenha a div externa se quiser preservar o layout.
+-->
+
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo">
+        <div class="logo-icon">⚡</div>
+        <div>
+          <p class="logo-title">FitCalc</p>
+          <p class="logo-subtitle">ferramentas fitness</p>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#ferramentas">Ferramentas</a>
+        <a href="#imc">IMC</a>
+        <a href="#bf">BF</a>
+        <a href="#macros">Macros</a>
+        <a href="#treinos">Treinos</a>
+        <a href="#timer">Timer</a>
+        <a href="#blog">Blog</a>
+      </nav>
+
+      <a href="#imc" class="dark-button">Começar agora</a>
+      <button id="menuBtn" class="mobile-button">☰</button>
+    </div>
+
+    <div id="mobileNav" class="mobile-nav">
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#imc">IMC</a>
+      <a href="#bf">BF</a>
+      <a href="#macros">Macros</a>
+      <a href="#treinos">Treinos</a>
+      <a href="#timer">Timer</a>
+      <a href="#blog">Blog</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="ad-section ad-section-top" aria-label="Publicidade">
+      <div class="container">
+        <div class="ad-slot ad-slot-horizontal">
+          <span>Publicidade</span>
+          <small>Espaço para banner 970×90 ou responsivo</small>
+        </div>
+      </div>
+    </section>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">⚡ Site fitness com ferramentas gratuitas</div>
+          <h1>Calcule, planeje e acompanhe seus treinos em um só lugar.</h1>
+          <p class="hero-text">
+            IMC, percentual de gordura, macros, gerador de treino, timer e blog educativo para atrair visitas pelo Google e transformar o site em produto monetizável.
+          </p>
+          <div class="hero-actions">
+            <a href="#ferramentas" class="primary-button">Usar ferramentas ›</a>
+            <a href="#blog" class="secondary-button">Ver blog</a>
+          </div>
+        </div>
+
+        <div class="card hero-card">
+          <p class="card-tag">Painel rápido</p>
+          <h3>Resumo do usuário</h3>
+          <div class="summary-grid">
+            <div class="result-box"><div class="result-title">⚖️ IMC</div><div class="result-value">23,8</div><p class="result-note">Peso adequado</p></div>
+            <div class="result-box"><div class="result-title">🔥 Macros</div><div class="result-value">1.920 kcal</div><p class="result-note">Meta diária estimada</p></div>
+            <div class="result-box"><div class="result-title">🏋️ Treino</div><div class="result-value">ABC</div><p class="result-note">4 dias por semana</p></div>
+            <div class="result-box"><div class="result-title">⏱️ Timer</div><div class="result-value">40/20</div><p class="result-note">HIIT configurado</p></div>
+          </div>
+          <p class="warning">
+            Ferramentas rápidas para acompanhar seus cálculos, treinos e metas em uma única página.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ferramentas" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">MVP</p>
+          <h2>Ferramentas principais</h2>
+          <p class="section-subtitle">Use as calculadoras, gere sugestões de treino e acompanhe conteúdos úteis para sua rotina fitness.</p>
+        </div>
+
+        <div class="tools-grid">
+          <a href="#imc" class="card tool-card tool-link" aria-label="Abrir calculadora de IMC">
+            <div class="icon-circle">🧮</div>
+            <h3>IMC</h3>
+            <p>Calcule seu índice de massa corporal e veja a classificação.</p>
+            <span class="card-action">Abrir calculadora ›</span>
+          </a>
+
+          <a href="#bf" class="card tool-card tool-link" aria-label="Abrir calculadora de BF">
+            <div class="icon-circle">📏</div>
+            <h3>BF</h3>
+            <p>Estime o percentual de gordura pelo método Navy.</p>
+            <span class="card-action">Abrir calculadora ›</span>
+          </a>
+
+          <a href="#macros" class="card tool-card tool-link" aria-label="Abrir calculadora de macros">
+            <div class="icon-circle">🍽️</div>
+            <h3>Macros</h3>
+            <p>Calcule calorias, proteína, carboidratos e gorduras.</p>
+            <span class="card-action">Abrir calculadora ›</span>
+          </a>
+
+          <a href="#treinos" class="card tool-card tool-link" aria-label="Abrir gerador de treinos">
+            <div class="icon-circle">🏋️</div>
+            <h3>Treinos</h3>
+            <p>Gere um treino por objetivo, local e nível.</p>
+            <span class="card-action">Gerar treino ›</span>
+          </a>
+
+          <a href="#timer" class="card tool-card tool-link" aria-label="Abrir timer">
+            <div class="icon-circle">⏱️</div>
+            <h3>Timer</h3>
+            <p>Use cronômetro de descanso ou treino intervalado.</p>
+            <span class="card-action">Abrir timer ›</span>
+          </a>
+
+          <a href="#blog" class="card tool-card tool-link" aria-label="Ver postagens do blog">
+            <div class="icon-circle">📰</div>
+            <h3>Blog</h3>
+            <p>Publique conteúdos para atrair tráfego orgânico.</p>
+            <span class="card-action">Ver postagens ›</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ad-section" aria-label="Publicidade">
+      <div class="container">
+        <div class="ad-slot ad-slot-horizontal">
+          <span>Publicidade</span>
+          <small>Espaço para anúncio entre ferramentas e calculadoras</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="imc" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Calculadora</p>
+          <h2>IMC</h2>
+          <p class="section-subtitle">Calcule uma estimativa inicial do índice de massa corporal.</p>
+        </div>
+
+        <div class="calculator-grid">
+          <div class="card">
+            <div class="form-grid">
+              <label class="field"><span>Peso em kg</span><input id="imcPeso" type="number" value="70" step="0.1"></label>
+              <label class="field"><span>Altura em cm</span><input id="imcAltura" type="number" value="170" step="1"></label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="results-grid">
+              <div class="result-box"><div class="result-title">🧮 Seu IMC</div><div id="imcValor" class="result-value">-</div><p id="imcClasse" class="result-note">-</p></div>
+              <div class="result-box"><div class="result-title">⚖️ Faixa estimada</div><div id="imcFaixa" class="result-value">-</div><p class="result-note">Peso associado ao IMC adequado</p></div>
+              <div class="result-box"><div class="result-title">❤️ Leitura</div><div class="result-value">Inicial</div><p class="result-note">Use junto com medidas, saúde e composição corporal.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bf" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Calculadora</p>
+          <h2>Percentual de gordura corporal</h2>
+          <p class="section-subtitle">Estimativa pelo método Navy, usando medidas corporais simples.</p>
+        </div>
+
+        <div class="calculator-grid">
+          <div class="card">
+            <div class="form-grid">
+              <label class="field"><span>Sexo</span><select id="bfSexo"><option value="feminino">Feminino</option><option value="masculino">Masculino</option></select></label>
+              <label class="field"><span>Peso em kg</span><input id="bfPeso" type="number" value="65"></label>
+              <label class="field"><span>Altura em cm</span><input id="bfAltura" type="number" value="165"></label>
+              <label class="field"><span>Cintura em cm</span><input id="bfCintura" type="number" value="75"></label>
+              <label class="field"><span>Pescoço em cm</span><input id="bfPescoco" type="number" value="32"></label>
+              <label id="quadrilWrap" class="field"><span>Quadril em cm</span><input id="bfQuadril" type="number" value="98"></label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="results-grid">
+              <div class="result-box"><div class="result-title">📏 BF estimado</div><div id="bfValor" class="result-value">-</div><p id="bfClasse" class="result-note">-</p></div>
+              <div class="result-box"><div class="result-title">⚖️ Massa magra</div><div id="bfMagra" class="result-value">-</div><p class="result-note">Estimativa aproximada</p></div>
+              <div class="result-box"><div class="result-title">🔥 Massa de gordura</div><div id="bfGordura" class="result-value">-</div><p class="result-note">Estimativa aproximada</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ad-section" aria-label="Publicidade">
+      <div class="container">
+        <div class="ad-slot ad-slot-horizontal compact">
+          <span>Publicidade</span>
+          <small>Espaço para anúncio responsivo</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="macros" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Calculadora</p>
+          <h2>Macros e calorias</h2>
+          <p class="section-subtitle">Calcule uma meta diária estimada de calorias, proteínas, carboidratos e gorduras.</p>
+        </div>
+
+        <div class="calculator-grid">
+          <div class="card">
+            <div class="form-grid">
+              <label class="field"><span>Sexo</span><select id="macroSexo"><option value="feminino">Feminino</option><option value="masculino">Masculino</option></select></label>
+              <label class="field"><span>Idade</span><input id="macroIdade" type="number" value="30"></label>
+              <label class="field"><span>Peso em kg</span><input id="macroPeso" type="number" value="65"></label>
+              <label class="field"><span>Altura em cm</span><input id="macroAltura" type="number" value="165"></label>
+              <label class="field"><span>Atividade</span><select id="macroAtividade"><option value="1.2">Sedentário</option><option value="1.375" selected>Leve: 1–3x/semana</option><option value="1.55">Moderado: 3–5x/semana</option><option value="1.725">Intenso: 6–7x/semana</option></select></label>
+              <label class="field"><span>Objetivo</span><select id="macroObjetivo"><option value="emagrecer">Emagrecer</option><option value="manter" selected>Manter peso</option><option value="ganhar">Ganhar massa</option></select></label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="results-grid two">
+              <div class="result-box"><div class="result-title">🔥 Calorias</div><div id="macroCalorias" class="result-value">-</div><p class="result-note">Meta diária estimada</p></div>
+              <div class="result-box"><div class="result-title">🍽️ Proteína</div><div id="macroProteina" class="result-value">-</div><p class="result-note">Por dia</p></div>
+              <div class="result-box"><div class="result-title">⚡ Carboidratos</div><div id="macroCarbo" class="result-value">-</div><p class="result-note">Por dia</p></div>
+              <div class="result-box"><div class="result-title">⚖️ Gorduras</div><div id="macroGordura" class="result-value">-</div><p class="result-note">Por dia</p></div>
+              <div class="result-box"><div class="result-title">💧 Água</div><div id="macroAgua" class="result-value">-</div><p class="result-note">Estimativa simples</p></div>
+              <div class="result-box"><div class="result-title">🧮 TMB</div><div id="macroTmb" class="result-value">-</div><p class="result-note">Metabolismo basal</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="treinos" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Gerador</p>
+          <h2>Gerador de treinos</h2>
+          <p class="section-subtitle">Monte uma sugestão simples de treino conforme local, nível, objetivo e foco muscular.</p>
+        </div>
+
+        <div class="calculator-grid">
+          <div class="card">
+            <div class="form-grid">
+              <label class="field"><span>Local</span><select id="treinoLocal"><option value="academia">Academia</option><option value="casa">Casa</option></select></label>
+              <label class="field"><span>Nível</span><select id="treinoNivel"><option value="iniciante">Iniciante</option><option value="intermediario">Intermediário</option><option value="avancado">Avançado</option></select></label>
+              <label class="field"><span>Objetivo</span><select id="treinoObjetivo"><option value="hipertrofia">Hipertrofia</option><option value="emagrecimento">Emagrecimento</option><option value="forca">Força</option></select></label>
+              <label class="field"><span>Dias por semana</span><select id="treinoDias"><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option></select></label>
+              <label class="field"><span>Foco</span><select id="treinoFoco"><option value="fullbody">Corpo todo</option><option value="pernas">Pernas e glúteos</option><option value="superiores">Superiores</option></select></label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="workout-meta">
+              <span id="treinoDivisao" class="meta-pill green">Divisão: Full body</span>
+              <span id="treinoDescanso" class="meta-pill">Descanso: 60–90s</span>
+              <span id="treinoSeries" class="meta-pill">3 séries de 8–12 reps</span>
+            </div>
+
+            <div id="treinoLista" class="exercise-list"></div>
+
+            <p class="warning">
+              Sugestão geral. Para dor, lesão, condição de saúde ou treino de alta intensidade, procure orientação profissional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timer" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Cronômetro</p>
+          <h2>Timer de treino intervalado</h2>
+          <p class="section-subtitle">Configure tempo de exercício, descanso e número de rounds para HIIT, circuito ou descanso entre séries.</p>
+        </div>
+
+        <div class="calculator-grid">
+          <div class="card">
+            <div class="form-grid">
+              <label class="field"><span>Exercício em segundos</span><input id="timerWork" type="number" value="40"></label>
+              <label class="field"><span>Descanso em segundos</span><input id="timerRest" type="number" value="20"></label>
+              <label class="field"><span>Rounds</span><input id="timerRounds" type="number" value="8"></label>
+            </div>
+            <p id="timerTotal">Tempo total aproximado: -</p>
+          </div>
+
+          <div class="card timer-card">
+            <div id="timerPhase" class="phase-pill work">Exercício</div>
+            <div id="timerNumber" class="timer-number">00:40</div>
+            <p id="timerRound" class="timer-round">Round 1 de 8</p>
+
+            <div class="timer-actions">
+              <button id="timerStart" class="primary-button">▶ Iniciar</button>
+              <button id="timerReset" class="secondary-button">↻ Resetar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ad-section" aria-label="Publicidade">
+      <div class="container">
+        <div class="ad-slot ad-slot-horizontal compact">
+          <span>Publicidade</span>
+          <small>Espaço para anúncio antes do blog</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Conteúdo</p>
+          <h2>Blog fitness</h2>
+          <p class="section-subtitle">Conteúdos sobre treino, nutrição, composição corporal e hábitos saudáveis.</p>
+        </div>
+
+        <div id="blogGrid" class="blog-grid"></div>
+
+        <div class="ad-slot ad-slot-horizontal blog-ad">
+          <span>Publicidade</span>
+          <small>Espaço para anúncio abaixo dos posts</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="monetizacao" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Próximos passos</p>
+          <h2>Base para monetização</h2>
+          <p class="section-subtitle">Áreas reservadas para anúncios, recomendações e futuras funcionalidades premium.</p>
+        </div>
+
+        <div class="monetization-grid">
+          <div class="card"><h3>Google AdSense</h3><p>Anúncios nos posts, páginas das calculadoras e tela de resultado.</p></div>
+          <div class="card"><h3>Afiliados</h3><p>Indicação de equipamentos, roupas, acessórios, aplicativos ou cursos.</p></div>
+          <div class="card"><h3>Premium</h3><p>Histórico, PDF personalizado, planos semanais e remoção de anúncios.</p></div>
+        </div>
+
+        <div class="card policy-card">
+          <div class="policy-row">
+            <p id="policyText">Aviso: As informações deste site são educativas e estimativas. Elas não substituem avaliação médica, nutricional ou acompanhamento de profissional de educação física.</p>
+            <button id="copyPolicy" class="secondary-button">📋 Copiar aviso</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">FitCalc</p>
+        <p class="footer-subtitle">Ferramentas gratuitas para quem treina.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#blog">Blog</a>
+        <a href="#imc">IMC</a>
+        <a href="#macros">Macros</a>
+        <a href="#treinos">Treinos</a>
+        <a href="./sobre.html">Sobre</a>
+        <a href="./contato.html">Contato</a>
+        <a href="./politica-privacidade.html">Privacidade</a>
+        <a href="./politica-cookies.html">Cookies</a>
+        <a href="./termos.html">Termos</a>
+        <a href="./aviso-saude.html">Aviso de saúde</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./data/posts.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

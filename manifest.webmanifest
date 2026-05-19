@@ -1,0 +1,10 @@
+{
+  "name": "FitCalc — Ferramentas Fitness",
+  "short_name": "FitCalc",
+  "description": "Calculadoras de IMC, BF, macros, gerador de treinos, timer e blog fitness.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#22c55e",
+  "icons": []
+}
